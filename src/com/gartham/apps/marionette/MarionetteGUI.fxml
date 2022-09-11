@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<BorderPane fx:id="root" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+<BorderPane fx:id="root" onKeyPressed="#rootKeyPressed" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
    <center>
       <SplitPane dividerPositions="0.73913043478" prefHeight="600.0" BorderPane.alignment="CENTER">
         <items>
