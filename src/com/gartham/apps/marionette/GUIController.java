@@ -2,6 +2,7 @@ package com.gartham.apps.marionette;
 
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
@@ -43,49 +44,48 @@ public class GUIController {
 			}
 		});
 
-		usernameColumn.setCellFactory(param -> new TableCell<>() {
-			protected void updateItem(Account item, boolean empty) {
-				if (empty || item == null) {
-					setText(null);
-					setGraphic(null);
-				} else if (item.getUsername() != null) {
-					setText(item.getUsername());
-					setTextFill(Color.GOLD);
-				} else {
-					setText("None");
-					setTextFill(Color.FIREBRICK);
-				}
+		usernameColumn.setCellFactory(param -> new TextCell() {
+			@Override
+			protected String getText(Account item) {
+				return item.getUsername();
 			}
 		});
 
-		emailColumn.setCellFactory(param -> new TableCell<>() {
-			protected void updateItem(Account item, boolean empty) {
-				if (empty || item == null) {
-					setText(null);
-					setGraphic(null);
-				} else if (item.getEmail() != null) {
-					setText(item.getEmail());
-					setTextFill(Color.GOLD);
-				} else {
-					setText("None");
-					setTextFill(Color.FIREBRICK);
-				}
+		emailColumn.setCellFactory(param -> new TextCell() {
+			@Override
+			protected String getText(Account item) {
+				return item.getEmail();
 			}
 		});
-		passwordColumn.setCellFactory(param -> new TableCell<>() {
-			protected void updateItem(Account item, boolean empty) {
-				if (empty || item == null) {
-					setText(null);
-					setGraphic(null);
-				} else if (item.getPassword() != null) {
-					setText(item.getPassword());
-					setTextFill(Color.GOLD);
-				} else {
-					setText("None");
-					setTextFill(Color.FIREBRICK);
-				}
+		passwordColumn.setCellFactory(param -> new TextCell() {
+
+			@Override
+			protected String getText(Account item) {
+				return item.getPassword();
 			}
 		});
+	}
+
+	private static abstract class TextCell extends TableCell<Account, Account> {
+
+		{
+			setAlignment(Pos.CENTER);
+		}
+
+		protected abstract String getText(Account item);
+
+		protected void updateItem(Account item, boolean empty) {
+			if (empty || item == null) {
+				setText(null);
+				setGraphic(null);
+			} else if (getText(item) != null) {
+				setText(getText(item));
+				setTextFill(Color.GOLD);
+			} else {
+				setText("None");
+				setTextFill(Color.FIREBRICK);
+			}
+		}
 	}
 
 }
