@@ -12,16 +12,16 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+<BorderPane fx:id="root" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
    <center>
       <SplitPane dividerPositions="0.73913043478" prefHeight="600.0" BorderPane.alignment="CENTER">
         <items>
-            <TableView minWidth="300.0" prefWidth="850.0">
+            <TableView fx:id="accountList" minWidth="300.0" prefWidth="850.0">
               <columns>
-                  <TableColumn minWidth="-Infinity" prefWidth="100.0" text="Profile Icon" />
-                <TableColumn minWidth="-Infinity" prefWidth="150.0" text="Username" />
-                <TableColumn minWidth="-Infinity" prefWidth="-1.0" text="Email" />
-                  <TableColumn minWidth="-Infinity" prefWidth="150.0" text="Password" />
+                  <TableColumn fx:id="profileIconColumn" minWidth="-Infinity" prefWidth="100.0" text="Profile Icon" />
+                <TableColumn fx:id="usernameColumn" minWidth="-Infinity" prefWidth="150.0" text="Username" />
+                <TableColumn fx:id="emailColumn" minWidth="-Infinity" prefWidth="-1.0" text="Email" />
+                  <TableColumn fx:id="passwordColumn" minWidth="-Infinity" prefWidth="150.0" text="Password" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
